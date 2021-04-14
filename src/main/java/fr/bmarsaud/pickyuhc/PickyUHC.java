@@ -1,6 +1,8 @@
 package fr.bmarsaud.pickyuhc;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
@@ -28,15 +30,16 @@ public class PickyUHC extends JavaPlugin implements Listener {
         enabledByDefault = enabledPlayers.contains("*");
     }
 
-    public List<String> getEnabledPlayers() {
-        return enabledPlayers;
-    }
+    public void updatePlayerRegen(Player player) {
+        boolean isRegenActive = enabledByDefault;
+        if(enabledPlayers.contains(player.getName())) {
+            isRegenActive = true;
+        } else if(disabledPlayers.contains(player.getName())) {
+            isRegenActive = false;
+        }
 
-    public List<String> getDisabledPlayers() {
-        return disabledPlayers;
-    }
-
-    public boolean isEnabledByDefault() {
-        return enabledByDefault;
+        player.setSaturatedRegenRate(isRegenActive ? 10 : Integer.MAX_VALUE);
+        player.setUnsaturatedRegenRate(isRegenActive ? 80 : Integer.MAX_VALUE);
+        player.setMetadata("regen.enabled", new FixedMetadataValue(this, isRegenActive));
     }
 }

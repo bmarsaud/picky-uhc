@@ -17,18 +17,7 @@ public class PickyUHCListener implements Listener {
 
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
-        boolean isRegenActive = this.pickyUHC.isEnabledByDefault();
-        if(this.pickyUHC.getEnabledPlayers().contains(event.getPlayer().getName())) {
-            isRegenActive = true;
-        } else if(this.pickyUHC.getDisabledPlayers().contains(event.getPlayer().getName())) {
-            isRegenActive = false;
-        }
-        event.getPlayer().setMetadata("regen.enabled", new FixedMetadataValue(pickyUHC, isRegenActive));
-
-        if(!isRegenActive) {
-            event.getPlayer().setSaturatedRegenRate(Integer.MAX_VALUE);
-            event.getPlayer().setUnsaturatedRegenRate(Integer.MAX_VALUE);
-        }
+        this.pickyUHC.updatePlayerRegen(event.getPlayer());
     }
 
     @EventHandler
