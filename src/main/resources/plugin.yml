@@ -1,0 +1,4 @@
+name: PickyUHC
+version: 1.0-SNAPSHOT
+description: PickyUHC deactivate natural regeneration only for a subset of players!
+main: fr.bmarsaud.pickyuhc.PickyUHC
