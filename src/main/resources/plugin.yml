@@ -2,3 +2,8 @@ name: PickyUHC
 version: 1.0-SNAPSHOT
 description: PickyUHC deactivate natural regeneration only for a subset of players!
 main: fr.bmarsaud.pickyuhc.PickyUHC
+commands:
+  pickyuhc:
+    description: Manage players regeneration
+    usage: "/pickyuhc reload - Reload configuration from file\n/pickyuhc <enable|disable> <Player> - Enable or disable natural regeneration for the given player"
+    permission: pickyuhc.command
