@@ -19,18 +19,18 @@ public class PickyUHCCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
-        if(args.length == 1 && "reload".equals(args[0])) {
+        if(args.length == 1 && "reload".equalsIgnoreCase(args[0])) {
             pickyUHC.reloadConfig();
             pickyUHC.loadConfig();
             pickyUHC.updateAllPlayersRegen();
             commandSender.sendMessage(PLUGIN_PREFIX + "Config successfully reloaded!");
             return true;
         } else if(args.length == 2) {
-            if("enable".equals(args[0])) {
+            if("enable".equalsIgnoreCase(args[0])) {
                 pickyUHC.setPlayerRegen(args[1], true);
                 commandSender.sendMessage(PLUGIN_PREFIX + "Natural regeneration successfully enabled for player " + args[1]);
                 return true;
-            } else if("disable".equals(args[0])) {
+            } else if("disable".equalsIgnoreCase(args[0])) {
                 pickyUHC.setPlayerRegen(args[1], false);
                 commandSender.sendMessage(PLUGIN_PREFIX + "Natural regeneration successfully disabled for player " + args[1]);
                 return true;
