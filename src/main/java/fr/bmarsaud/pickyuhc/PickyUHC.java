@@ -22,6 +22,8 @@ public class PickyUHC extends JavaPlugin implements Listener {
         getLogger().info(disabledPlayers.size() + " players loaded with natural regeneration disabled");
 
         getServer().getPluginManager().registerEvents(new PickyUHCListener(this), this);
+
+        updateAllPlayersRegen();
     }
 
     public void loadConfig() {
@@ -41,5 +43,11 @@ public class PickyUHC extends JavaPlugin implements Listener {
         player.setSaturatedRegenRate(isRegenActive ? 10 : Integer.MAX_VALUE);
         player.setUnsaturatedRegenRate(isRegenActive ? 80 : Integer.MAX_VALUE);
         player.setMetadata("regen.enabled", new FixedMetadataValue(this, isRegenActive));
+    }
+
+    public void updateAllPlayersRegen() {
+        for(Player player : getServer().getOnlinePlayers()) {
+            updatePlayerRegen(player);
+        }
     }
 }
