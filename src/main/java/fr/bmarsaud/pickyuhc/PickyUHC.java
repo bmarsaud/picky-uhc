@@ -18,6 +18,8 @@ public class PickyUHC extends JavaPlugin implements Listener {
         getLogger().info("Natural regeneration is " + (enabledByDefault ? "enabled" : "disabled") + " by default");
         getLogger().info(enabledPlayers.size() + " players loaded with natural regeneration enabled");
         getLogger().info(disabledPlayers.size() + " players loaded with natural regeneration disabled");
+
+        getServer().getPluginManager().registerEvents(new PickyUHCListener(this), this);
     }
 
     public void loadConfig() {
