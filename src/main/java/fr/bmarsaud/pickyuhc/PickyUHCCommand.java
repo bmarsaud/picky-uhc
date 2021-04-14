@@ -4,8 +4,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 
-public class PickyUHCCommand implements CommandExecutor {
+import java.util.Arrays;
+import java.util.List;
+
+public class PickyUHCCommand implements CommandExecutor, TabCompleter {
     private static String PLUGIN_PREFIX = ChatColor.GREEN + "[" + ChatColor.YELLOW + "PickyUHC" + ChatColor.GREEN + "] ";
     private PickyUHC pickyUHC;
 
@@ -34,5 +38,15 @@ public class PickyUHCCommand implements CommandExecutor {
         }
 
         return false;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args) {
+        if(args.length < 2) {
+            return Arrays.asList("reload", "enable", "disable");
+        } else if(args.length == 2 && !"reload".equalsIgnoreCase(args[0])) {
+            return null;
+        }
+        return Arrays.asList();
     }
 }
