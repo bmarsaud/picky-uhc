@@ -1,0 +1,7 @@
+# Place under the "enable" section the list of players that have the natural regeneration enabled
+# And under the "disable" section the list of players with natural regeneration disabled (UHC)
+# Use the '*' wildcard to specify all players (except the ones in the other section)
+regen:
+  enable:
+    - '*'
+  disable:
