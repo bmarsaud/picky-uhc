@@ -1,7 +1,11 @@
 # Place under the "enable" section the list of players that have the natural regeneration enabled
 # And under the "disable" section the list of players with natural regeneration disabled (UHC)
-# Use the '*' wildcard to specify all players (except the ones in the other section)
+#
+# Use the '*' wildcard to specify if natural generation must be enable or disabled for all players by default
+# Note that if no section contains the '*' wildcard, natural regeneration is enabled by default
+#
+# If you want to only use permissions instead of this configuration file just let this file as is
 regen:
   enable:
     - '*'
-  disable:
+  disable: []

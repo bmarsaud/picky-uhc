@@ -7,3 +7,10 @@ commands:
     description: Manage players regeneration
     usage: "/pickyuhc reload - Reload configuration from file\n/pickyuhc <enable|disable> <Player> - Enable or disable natural regeneration for the given player"
     permission: pickyuhc.command
+permissions:
+  pickyuhc.regen.enable:
+    description: "Enable natural regeneration for this player"
+    default: false
+  pickyuhc.regen.disable:
+    description: "Disable natural regeneration for this player"
+    default: false

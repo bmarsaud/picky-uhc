@@ -30,16 +30,22 @@ public class PickyUHC extends JavaPlugin implements Listener {
     public void loadConfig() {
         enabledPlayers = getConfig().getStringList("regen.enable");
         disabledPlayers = getConfig().getStringList("regen.disable");
-        enabledByDefault = enabledPlayers.contains("*");
+        enabledByDefault = !disabledPlayers.contains("*");
     }
 
     public void updatePlayerRegen(Player player) {
         boolean isRegenActive = enabledByDefault;
-        if(enabledPlayers.contains(player.getName())) {
+        if(player.hasPermission("pickyuhc.regen.enable")) {
+            isRegenActive = true;
+        } else if(player.hasPermission("pickyuhc.regen.disable")) {
+            isRegenActive = false;
+        } else if(enabledPlayers.contains(player.getName())) {
             isRegenActive = true;
         } else if(disabledPlayers.contains(player.getName())) {
             isRegenActive = false;
         }
+
+        getLogger().info(player.getName() + ", " + isRegenActive + ", " + player.hasPermission("pickyuhc.regen.enable"));
 
         player.setSaturatedRegenRate(isRegenActive ? 10 : Integer.MAX_VALUE);
         player.setUnsaturatedRegenRate(isRegenActive ? 80 : Integer.MAX_VALUE);

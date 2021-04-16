@@ -9,13 +9,21 @@ This plugin was developed and tested on Spigot 1.16.5 but is probably compatible
 Place the plugin JAR file in your `plugins` folder.
 
 ## Configuration
-Edit the `PickyUHC/config.yml` from your `plugins` folder.
+There are two ways to use this plugins: using permissions or using the configuration file.
+
+### Configuration file
+Edit the `PickyUHC/config.yml` file from your `plugins` folder.
 
 Put under the `enable` section the list of players with natural regeneration activated and under the `disable` section the list of players with natural regeneration deactivated.
 
-You can use the wildcard `'*'`  character to specify all players (except the ones in the other section).
+You can use the wildcard `'*'`  character to define if natural regeneration is enabled or disabled by default for all players. Note that if you don't specify a wildcard in any section, natural regeneration will be enabled by default.
 
 Reload the configuration using the `/pickyuhc reload` command if the server is already started.
+
+### Permissions
+Use the `pickyuhc.regen.enable` to enable natural regeneration and `pickyuhc.regen.disable` to disable natural regeneration.
+
+If a player has both permissions, natural regeneration will be enabled by default.
 
 ## Commands
 |Command|Usage|
@@ -27,3 +35,5 @@ Reload the configuration using the `/pickyuhc reload` command if the server is a
 |Permission|Usage|
 |---|---|
 |`pickyuhc.command`|Allow the use of the `/pickyuhc` command|
+|`pickyuhc.regen.enable`|Enable natural regeneration for this player|
+|`pickyuhc.regen.disable`|Disable natural regeneration for this player|
