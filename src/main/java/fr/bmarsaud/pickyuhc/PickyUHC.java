@@ -45,8 +45,6 @@ public class PickyUHC extends JavaPlugin implements Listener {
             isRegenActive = false;
         }
 
-        getLogger().info(player.getName() + ", " + isRegenActive + ", " + player.hasPermission("pickyuhc.regen.enable"));
-
         player.setSaturatedRegenRate(isRegenActive ? 10 : Integer.MAX_VALUE);
         player.setUnsaturatedRegenRate(isRegenActive ? 80 : Integer.MAX_VALUE);
         player.setMetadata("regen.enabled", new FixedMetadataValue(this, isRegenActive));
